@@ -42,7 +42,7 @@
                    #name="ngModel" >
           </div>
           <div class="form-group">
-            <button type="button" class="btn btn-success btn-sm" (click)="toggleEdit()">Save</button>
+            <button type="button" class="btn btn-success btn-sm" (click)="save()">Save</button>
           </div>
         </div>
       </form>
@@ -51,7 +51,8 @@
 
     <div class="btn-group btn-group-sm" role="group" aria-label="...">
       <button type="button" class="btn btn-default" (click)="toggleEdit()">{{edit ? 'Cancel' : 'Edit'}}</button>
-      <button type="button" class="btn btn-danger">Delete</button>
+      <button type="button" class="btn btn-danger delete"
+              (click)="delete(book); $event.stopPropagation()">Delete</button>
     </div>
 
   </div>

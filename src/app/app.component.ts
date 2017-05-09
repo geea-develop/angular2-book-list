@@ -24,4 +24,9 @@ export class AppComponent implements OnInit {
   getBooks(): void {
     this.bookService.getBooks().then(books => this.books = books);
   }
+
+  onDeleteBook(book: Book): void {
+    this.books = this.books.filter(h => h !== book);
+  }
+
 }
