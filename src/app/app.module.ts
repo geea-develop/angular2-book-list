@@ -10,11 +10,13 @@ import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { BookNamePipe } from './book-name.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    BookNamePipe,
   ],
   imports: [
     BrowserModule,
