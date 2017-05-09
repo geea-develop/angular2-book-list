@@ -11,12 +11,14 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { AppComponent } from './app.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookNamePipe } from './book-name.pipe';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookDetailComponent,
     BookNamePipe,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

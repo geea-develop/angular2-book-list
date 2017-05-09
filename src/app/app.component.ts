@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
 
 import { Book } from './book';
-import { BookService } from './book.service'
+import { BookService } from './book.service';
 
 @Component({
   selector: 'app-root',
