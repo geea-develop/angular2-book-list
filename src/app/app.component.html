@@ -1,3 +1,14 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <h2> <span  class="glyphicon glyphicon-book"></span> {{title}}</h2>
+    </div>
+  </div>
+</nav>
+
+<div class="well">
+  <div *ngFor="let book of books">
+    <app-book-detail  [book]="book"></app-book-detail>
+  </div>
+</div>
+

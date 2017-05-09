@@ -1,0 +1,59 @@
+<div class="media" *ngIf="book">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWJlYzJmMGM2MiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YmVjMmYwYzYyIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi4xNzE4NzUiIHk9IjM2LjY2NDA2MjUiPjY0eDY0PC90ZXh0PjwvZz48L2c+PC9zdmc+" alt="...">
+    </a>
+  </div>
+  <div class="media-body">
+
+    <!-- show book details without edit -->
+    <div *ngIf="!edit">
+      <h4 class="media-heading">{{book.title}}</h4>
+
+      <label class="center-block">Author: {{book.author}}</label>
+
+      <label class="center-block">Date: {{book.date}}</label>
+
+    </div>
+
+    <!-- show editable book details -->
+    <div *ngIf="edit">
+
+
+      <form class="form-horizontal">
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <input type="text" id="title" class="form-control input-sm"
+                   required minlength="4" maxlength="24"
+                   name="title" [(ngModel)]="book.title"
+                   #name="ngModel" >
+          </div>
+          <div class="form-group">
+            <input type="text" id="author" class="form-control input-sm"
+                   required minlength="4" maxlength="24"
+                   name="author" [(ngModel)]="book.author"
+                   #name="ngModel" >
+          </div>
+          <div class="form-group">
+            <input type="date" id="date" class="form-control input-sm"
+                   required
+                   name="date" [(ngModel)]="book.date"
+                   #name="ngModel" >
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-success btn-sm" (click)="toggleEdit()">Save</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+      <button type="button" class="btn btn-default" (click)="toggleEdit()">{{edit ? 'Cancel' : 'Edit'}}</button>
+      <button type="button" class="btn btn-danger">Delete</button>
+    </div>
+
+  </div>
+<hr />
+</div>
