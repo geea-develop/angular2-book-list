@@ -1,5 +1,5 @@
 import { Output, EventEmitter, Component, Input, ViewChild } from '@angular/core';
-import { FormControl,FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Book } from '../book';
 import { BookService } from '../book.service';
@@ -18,10 +18,20 @@ export class BookDetailComponent {
   @Input() book: Book;
   @Output() deleteBook: EventEmitter<any> = new EventEmitter<any>();
 
+  editBookForm : FormGroup;
+
   @ViewChild(ModalComponent)
   public readonly modal: ModalComponent;
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, fb: FormBuilder) {
+    this.editBookForm = fb.group({
+      // We can set default values by passing in the corresponding value or leave blank if we wish to not set the value. For our example, we’ll default the gender to female.
+      'title' : ['title', Validators.compose([Validators.required, Validators.minLength(1)])],
+      'author': ['author', Validators.compose([Validators.required, Validators.minLength(1)])],
+      'date' : ['date', Validators.required]
+    })
+
+  }
 
   toggleEdit(): void {
     this.edit = !this.edit;
@@ -32,7 +42,7 @@ export class BookDetailComponent {
       .then(() => this.toggleEdit());
   }
 
-  delete(book: Book): void {
+  remove(book: Book): void {
     this.bookService
       .delete(book.id)
       .then(() => {

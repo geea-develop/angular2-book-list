@@ -20,29 +20,33 @@
     <div *ngIf="edit">
 
 
-      <form class="form-horizontal">
+      <form name="book" [formGroup]="editBookForm" class="form-horizontal" (ngSubmit)="save(editBookForm.value)" >
 
         <div class="col-md-12">
-          <div class="form-group">
+          <div class="form-group" [ngClass]="{'has-error':!editBookForm.controls['title'].valid}">
             <input type="text" id="title" class="form-control input-sm"
-                   required minlength="4" maxlength="24"
-                   name="title" [(ngModel)]="book.title"
-                   #name="ngModel" >
+                   required
+                   [formControl]="editBookForm.controls['title']"
+                   name="title" [(ngModel)]="book.title">
+            <div *ngIf="editBookForm.controls['title'].hasError('minlength') && editBookForm.controls['title'].touched" class="alert alert-danger">Title can not be empty.</div>
           </div>
-          <div class="form-group">
+          <div class="form-group" [ngClass]="{'has-error':!editBookForm.controls['author'].valid}">
             <input type="text" id="author" class="form-control input-sm"
-                   required minlength="4" maxlength="24"
-                   name="author" [(ngModel)]="book.author"
-                   #name="ngModel" >
+                   required
+                   [formControl]="editBookForm.controls['author']"
+                   name="author" [(ngModel)]="book.author">
+            <div *ngIf="editBookForm.controls['author'].hasError('minlength') && editBookForm.controls['author'].touched" class="alert alert-danger">Author name can not be empty.</div>
           </div>
-          <div class="form-group">
+          <div class="form-group" [ngClass]="{'has-error':!editBookForm.controls['date'].valid}">
             <input type="date" id="date" class="form-control input-sm"
                    required
-                   name="date" [(ngModel)]="book.date"
-                   #name="ngModel" >
+                   [formControl]="editBookForm.controls['date']"
+                   name="date" [(ngModel)]="book.date">
+            <div *ngIf="editBookForm.controls['date'].hasError('minlength') && editBookForm.controls['date'].touched" class="alert alert-danger">Invalid Date.</div>
           </div>
+
           <div class="form-group">
-            <button type="button" class="btn btn-success btn-sm" (click)="save()"><span class="glyphicon glyphicon-ok"></span> Save</button>
+            <button type="submit" class="btn btn-success btn-sm" [disabled]="!editBookForm.valid"><span class="glyphicon glyphicon-ok"></span> Save</button>
           </div>
         </div>
       </form>
@@ -67,7 +71,7 @@
     </div>
     <div class="app-modal-footer">
       <button type="button" class="btn btn-default" (click)="modal.hide()">Cancel</button>
-      <button type="button" class="btn btn-danger" (click)="delete(book)">Yes</button>
+      <button type="button" class="btn btn-danger" (click)="remove(book)">Yes</button>
     </div>
   </app-modal>
 
