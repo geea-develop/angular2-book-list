@@ -4,4 +4,4 @@
 ##### https://github.com/angular/angular-cli
 
 ## Live example
-https://peaceful-sea-75321.herokuapp.com/
+https://angular2-booklist.herokuapp.com/
