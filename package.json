@@ -22,7 +22,7 @@
     "@angular/router": "9.1.1",
     "angular-in-memory-web-api": "0.10.0",
     "bootstrap": "4.4.1",
-    "core-js": "3.6.4",
+    "core-js": "3.6.5",
     "express": "4.17.1",
     "rxjs": "6.5.5",
     "zone.js": "0.10.3"
